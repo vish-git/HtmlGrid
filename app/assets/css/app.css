@@ -1,0 +1,15 @@
+table, th , td  {
+    border: 1px solid grey;
+    border-collapse: collapse;
+    padding: 5px;
+}
+table.center {
+    text-align:center;
+}
+
+.sortorder:after {
+    content: '\25b4';
+}
+.sortorder.reverse:after {
+    content: '\25be';
+}

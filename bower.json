@@ -1,0 +1,19 @@
+{
+  "name": "htmlgrid",
+  "description": "This is html grid in angular",
+  "main": "app.js",
+  "authors": [
+    "Vishwa"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

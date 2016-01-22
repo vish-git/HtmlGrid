@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Angular data grid5</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/app.css">
+    <script src="../node_modules/angular/angular.js"></script>
+    <script src="app.js"></script>
+</head>
+<body ng-app="myApp">
+<div  ng-controller="employeesCtrl">
+<h1>Employee Table</h1>
+
+    <form>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+
+                <input type="text" class="form-control" placeholder="Search" ng-model="search">
+                <span ng-hide="showRow">
+                <button ng-click="showRow = true ;buttohHide=!buttonHide" ng-show=buttonHide ng-init="buttonHide=true">Add Row</button>
+                </span>
+
+                <span ng-show="showRow">
+                    <button ng-click="relod(showRow)">ok</button>
+                    <button ng-click="showRow = !showRow">cancel</button>
+                </span>
+                <span><button ng-click="edit()" ng-hide="modify">Edit table</button></span>
+                 <span ng-show="modify">
+                    <button ng-click="afterEdit()">ok</button>
+                    <button ng-click="cancel()">cancel</button>
+                </span>
+                  </div>
+        </div>
+    </form>
+    <br>
+
+    <table>
+
+           <thead>
+            <tr>
+                <td>
+                    <a ng-click="order('Name')">Name</a>
+                    <span class="sortorder" ng-show="predicate === 'Name'" ng-class="{reverse:reverse}"></span>
+                </td>
+                <td>
+                    <a ng-click="order('id')">ID</a>
+                    <span class="sortorder" ng-show="predicate === 'id'" ng-class="{reverse:reverse}"></span>
+
+                </td>
+                <td>
+                    <a ng-click="order('Worklocation')">WorkLocation</a>
+                    <span class="sortorder" ng-show="predicate === 'Worklocation'" ng-class="{reverse:reverse}"></span>
+
+                </td>
+                <td>
+
+                </td>
+            </tr>
+            </thead>
+        <tr ng-show=showRow>
+            <td><input type="text" ng-model="newRow.Name"></td>
+            <td><input type="text" ng-model="newRow.id"></td>
+            <td><input type="text" ng-model="newRow.Worklocation"></td>
+        </tr>
+        <tr ng-repeat="x in names | orderBy:predicate:reverse | filter:search">
+            <td>{{ x.Name }}</td>
+            <td>{{ x.id }}</td>
+            <td>{{x.Worklocation | uppercase}}</td>
+            <td>
+                <button ng-disabled="!modify" ng-click="delete(x)">Delete</button>
+            </td>
+        </tr>
+
+    </table>
+
+</div>
+</body>
+</html>
